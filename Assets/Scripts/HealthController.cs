@@ -21,6 +21,10 @@ public class HealthController : MonoBehaviour
         // Handling the display of the health
         for (int i = 0; i < hearts.Length; i++)
         {
+            if (health > numOfHearts)
+            {
+                health = numOfHearts;
+            }
             if (i < health)
                 hearts[i].sprite = fullHeart;
             else
