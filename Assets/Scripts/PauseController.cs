@@ -19,7 +19,7 @@ public class PauseController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (pausable && Input.GetKeyDown("space"))
+        if (pausable && Input.GetKeyDown(KeyCode.P))
         {
             isActive = !isActive;
             c.enabled = isActive;
