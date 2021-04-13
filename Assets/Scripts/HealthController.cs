@@ -16,6 +16,11 @@ public class HealthController : MonoBehaviour
 
     public DeathController deathSystem;
 
+    void Update()
+    {
+        
+    }
+
     void FixedUpdate()
     {
         // Handling the display of the health
@@ -34,6 +39,12 @@ public class HealthController : MonoBehaviour
                 hearts[i].enabled = true;
             else
                 hearts[i].enabled = false;
+        }
+
+        if (transform.position.y < -6.79f)
+        {
+            // Explosion effect
+            deathSystem.GameOver();
         }
     }
 

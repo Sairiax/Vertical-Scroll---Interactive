@@ -23,6 +23,9 @@ public class PlayerController : MonoBehaviour
     public bool isMovementAllowed = true;
     private SpriteRenderer rd;
 
+    // Map System
+    public LevelSystem spawner;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,6 +57,13 @@ public class PlayerController : MonoBehaviour
                 jump = true;
                 doubleJump = false;
             }
+
+        if (transform.position.y > 4.5f)
+        {
+            transform.position = new Vector3(0, 0, 0);
+            // Spawn map
+            spawner.changeMap();
+        }
     }
 
     /**
@@ -95,12 +105,6 @@ public class PlayerController : MonoBehaviour
             physics.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
             jump = false;
         }
-    }
-
-    void OnBecameInvisible()
-    {
-        Debug.Log("Get back!");
-        transform.position = new Vector3(0, 0, 0);
     }
 
     public void EnemyJump()
